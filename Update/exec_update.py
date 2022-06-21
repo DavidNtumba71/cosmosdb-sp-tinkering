@@ -2,7 +2,6 @@
 from azure.cosmos import CosmosClient, PartitionKey, exceptions
 from dotenv import load_dotenv
 import os
-#Brazil
 
 id = "Citizen Kane"
 partition_key = "Mystery"
