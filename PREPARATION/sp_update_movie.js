@@ -3,7 +3,7 @@ function UpdateMovieGenre(genre, id) {
   var collectionLink = collection.getSelfLink();
 
   var whereQuery = {
-    query: "SELECT * FROM Movies m where m.id = @id",
+    query: "SELECT * FROM Movies m where m.id = @id;",
     parameters: [{ name: "@id", value: id }],
   };
   function ExecuteWhereClause(collection, collectionLink) {
