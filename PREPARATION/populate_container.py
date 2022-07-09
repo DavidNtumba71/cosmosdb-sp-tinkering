@@ -19,7 +19,7 @@ def map_identifiers(record):
     record['id'] = record['original_title']
     return record
     
-data = data_from_csv('Movies/movies_part_1.csv')
+data = data_from_csv('../Movies/movies_part_1.csv')
 
 for operation in (set_primary_genre, map_identifiers):
     data = [operation(record) for record in data]

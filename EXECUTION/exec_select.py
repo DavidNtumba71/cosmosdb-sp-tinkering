@@ -23,5 +23,5 @@ container   = database.get_container_client("movies")
 result      = container.scripts.execute_stored_procedure(
                 sproc=SELECT_SPROC,
                 params=[release_date],
-                partition_key=partition_key) 
+                partition_key=partition_key)
 print(result)
