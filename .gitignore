@@ -1,3 +1,4 @@
 .env
 /Movies
-/tinker
+/.venv
+/venv
