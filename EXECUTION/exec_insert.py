@@ -9,6 +9,9 @@ def data_from_csv(file_name):
         return [record for record in csv.DictReader(file, delimiter=';')]
 
 random_movie = choice(data_from_csv("../Movies/movies_part_2.csv"))
+calculated_partition_key = (random_movie["genres"]).split("|")[0]
+print(f'partition: "{calculated_partition_key}"')
+
 import json
 print(json.dumps(random_movie))
 random_movie = json.dumps(random_movie)
@@ -27,5 +30,5 @@ client          = CosmosClient(URL, credential=KEY)
 database        = client.get_database_client('demodb')
 
 container   = database.get_container_client("movies")
-result      = container.scripts.execute_stored_procedure(sproc=INSERT_SPROC,params=[[random_movie]],partition_key="") 
+result      = container.scripts.execute_stored_procedure(sproc=INSERT_SPROC,params=[[random_movie]],partition_key=calculated_partition_key) 
 print(result)

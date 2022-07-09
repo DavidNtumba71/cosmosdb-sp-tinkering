@@ -8,7 +8,7 @@ function DeleteMoviesOfGenre(genre) {
         parameters: [{ name: "@primary_genre", value: genre }],
     };
 
-    function QueryMoviesOfGenre(collection, genre) {
+    function QueryMoviesOfGenre(collection) {
         return collection.queryDocuments(
             collection.getSelfLink(),
             query,
@@ -24,7 +24,7 @@ function DeleteMoviesOfGenre(genre) {
         return;
     }
 
-    function ExecuteDeletions(documents, genre) {
+    function ExecuteDeletions(documents) {
         documents.forEach(function (document, genre) {
             document.genre = genre;
             var accept = collection.deleteDocument(

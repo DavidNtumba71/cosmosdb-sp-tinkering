@@ -1,12 +1,22 @@
 function insert_movie(movie) {
     var collection = getContext().getCollection();
 
+    var item = JSON.parse(movie);
+    
+    function setPrimaryGenre(genres){
+        if(genres == null){return "";}
+        else {return genres.split("|")[0];}
+    }   
+
+    item.primary_genre = setPrimaryGenre(item.genres);    
+    [item.RowID, item.id] = [item.id, item.original_title];
+
     var isInserted = collection.createDocument(
         collection.getSelfLink(),
-        movie, 
+        item, 
         function(err, insertedMovie){
             if (err) throw new Error('Error' + err.message);  
-            context.getResponse().setBody(insertedMovie)  
+            getContext().getResponse().setBody([insertedMovie, item])  
         }
     );
 

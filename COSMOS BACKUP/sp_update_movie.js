@@ -25,7 +25,7 @@ function UpdateMovieGenre(genre, id) {
     var accept = collection.replaceDocument(
       document._self,
       document,
-      (callback = UpdateCallback(err, document))
+      (callback = UpdateCallback)
     );
     if (!accept) throw "Unable to update document";
   }
